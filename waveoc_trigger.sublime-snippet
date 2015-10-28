@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+trigger ${TM_FILENAME/(.+)\..+|.*/$1/:name} on ${2:sObject} (after insert, after update, after delete, after undelete, before insert, before update, before delete) {
+
+	if (${3:TriggerHandler}.enablesTrigger) {	
+		if (Trigger.isAfter && Trigger.isInsert) {
+			${3:TriggerHandler}.${4:methodName}(Trigger.new, null);
+		}
+		if (Trigger.isAfter && Trigger.isUpdate) {
+			${3:TriggerHandler}.${4:methodName}(Trigger.new, Trigger.old);
+		}
+		if (Trigger.isAfter && Trigger.isDelete) {
+			${3:TriggerHandler}.${4:methodName}(null, Trigger.old);
+		}
+		if (Trigger.isAfter && Trigger.isUndelete) {
+			${3:TriggerHandler}.${4:methodName}(Trigger.new, null);
+		}
+	}
+
+}
+]]>
+	</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>waveoc_trigger</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>
