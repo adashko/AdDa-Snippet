@@ -3,18 +3,18 @@
 public static void ${1:methodName} (List<${2:sObject}> newRecords, List<${2:sObject}> oldRecords) {
 	// collect ids 
 	if (oldRecords == null) { // insert, undelete
-		for (${2:sObject} detail: newRecords) {
+		for (${2:sObject} record: newRecords) {
 			// logic for insert and undelete
 		} 
 	} else { 
 		if (newRecords != null) { // update
 			for (Integer i = 0; i < newRecords.size(); i++) {
-				${2:sObject} oldDetail = oldRecords.get(i);
-				${2:sObject} newDetail = newRecords.get(i); 
+				${2:sObject} oldRecord = oldRecords.get(i);
+				${2:sObject} newRecord = newRecords.get(i); 
 				// logic for update
 			}
 		} else { // delete
-			for (${2:sObject} detail: oldRecords) {
+			for (${2:sObject} record: oldRecords) {
 				// logic for delete
 			}
 		}
